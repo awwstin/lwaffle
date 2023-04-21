@@ -26,13 +26,15 @@ const PasswordReset = () => {
               position: "top-center",
             });
           } else {
-            const res = await fetch('${API_BASE_URL}/api/user/sendpasswordlink', {
+            const res = await fetch(`${API_BASE_URL}/api/user/sendpasswordlink`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ email })
             });
+
+            
 
             const data = await res.json();
 

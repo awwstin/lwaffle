@@ -77,7 +77,7 @@ const ProjectForm = () => {
   
     const project = {title, description, tags: Array.from(selectedTags), nums}
 
-    const response = await fetch('${API_BASE_URL}/api/projects/', {
+    const response = await fetch(`${API_BASE_URL}/api/projects/`, {
       method: 'POST',
       body: JSON.stringify(project),
       headers: {

@@ -16,7 +16,7 @@ function Confirmation() {
       email: email,
       emailToken: emailToken,
     }
-    axios.post("${API_BASE_URL}/api/user/verifyEmailToken", usernameAndToken)
+    axios.post(`${API_BASE_URL}/api/user/verifyEmailToken`, usernameAndToken)
       .then(response => {
         const responseStatus = response.data.status;
         if (responseStatus === 'okay') {

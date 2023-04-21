@@ -13,7 +13,7 @@ const ProjectDetails = ({ project }) => {
       return
     }
 
-    const response = await fetch('${API_BASE_URL}/api/projects/' + project._id, {
+    const response = await fetch(`${API_BASE_URL}/api/projects/` + project._id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${user.token}`
@@ -21,6 +21,7 @@ const ProjectDetails = ({ project }) => {
     })
     const json = await response.json()
 
+    
     if (response.ok) {
       dispatch({type: 'DELETE_PROJECT', payload: json})
     }

@@ -27,7 +27,7 @@ const server = http.createServer(app)
 
 const io = new Server(server, {
     cors: {
-      origin: 'https://llwaffle.onrender.com',
+      origin: process.env.FRONTEND_ORIGIN,
       methods: ['GET', 'POST', 'DELETE'],
     },
   })

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext"
 import ScrollToBottom from "react-scroll-to-bottom"
 import { useLocation } from 'react-router-dom';
-
+import { API_BASE_URL } from '../apiConfig.js';
 
 function Chatroom({socket}) {
 
@@ -26,7 +26,7 @@ function Chatroom({socket}) {
   // Function for fetching all the rooms current user is in
   // Author: Junhao Hui
   const fetchRooms = async () => {
-    const response = await fetch("/api/user/room_num", {
+    const response = await fetch("${API_BASE_URL}/api/user/room_num", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ function Chatroom({socket}) {
   // Function for fetching messages based on room number
   // Author: Junhao Hui
   const fetchMessages = async () => {
-    const response = await fetch('/api/message/' + room, {
+    const response = await fetch('${API_BASE_URL}/api/message/' + room, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${user.token}`
@@ -56,7 +56,7 @@ function Chatroom({socket}) {
   // Author: Junhao Hui
   const storeMessage = async (messageData) => {
 
-    const response = fetch('/api/message', {
+    const response = fetch('${API_BASE_URL}/api/message', {
         method: 'POST',
         body: JSON.stringify(messageData),
         headers: {
@@ -72,7 +72,7 @@ function Chatroom({socket}) {
   // Author: Junhao Hui
   const addRoom = async () => {
 
-    const response = await fetch('/api/user/join_room', {
+    const response = await fetch('${API_BASE_URL}/api/user/join_room', {
       method: 'PATCH',
       headers: {
         "Content-Type": "application/json",
@@ -105,7 +105,7 @@ function Chatroom({socket}) {
   // Author: Junhao Hui
   const leaveRoom = async () => {
 
-    const response = await fetch('/api/user/leave', {
+    const response = await fetch('${API_BASE_URL}/api/user/leave', {
       method: 'PATCH',
       headers: {
         "Content-Type": "application/json",
@@ -166,7 +166,7 @@ function Chatroom({socket}) {
     if (location.state && location.state.fromRedirect) {
       console.log("Redirection success. Creating/fetching room for project: " + location.state.proj_name )
       const directed = async () => {
-          const response = await fetch("/api/user/by_id", {
+          const response = await fetch("${API_BASE_URL}/api/user/by_id", {
             method:'PATCH',
             headers: {
               'Content-Type': 'application/json',

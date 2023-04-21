@@ -4,7 +4,7 @@ import { useNavigate} from 'react-router-dom'
 import profileImage from './profile.png'
 import dog from './dog.png'
 import waffle from './waffle.png'
-
+import { API_BASE_URL } from '../apiConfig.js';
 const Profile = () => {
   const [profile, setProfile] = useState({})
   const [isLoading, setIsLoading] = useState(true)
@@ -20,7 +20,7 @@ const Profile = () => {
         return
       }
       try {
-        const response = await fetch('/api/user/profile', {
+        const response = await fetch('${API_BASE_URL}/api/user/profile', {
           headers: { 'Authorization': `Bearer ${token}` }
         })
         const json = await response.json()

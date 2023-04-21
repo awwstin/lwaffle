@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
-
+import { API_BASE_URL } from '../apiConfig.js';
 export const useProfile = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
@@ -10,7 +10,7 @@ export const useProfile = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch('/api/user/profile', {
+    const response = await fetch('${API_BASE_URL}/api/user/profile', {
       method: 'PUT',
       headers: {
         "Content-Type": "application/json",

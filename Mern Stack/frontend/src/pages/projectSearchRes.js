@@ -3,7 +3,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import TinderCard from 'react-tinder-card'
 import { useNavigate } from 'react-router-dom'
-
+import { API_BASE_URL } from '../apiConfig.js';
 const Home = () => {
 
   // Extract search tag from query parameter
@@ -41,7 +41,7 @@ const Home = () => {
   useEffect(() => {
     const fetchResults = async () => {
       if (user) {
-        const response = await fetch(`/api/projects/search/${searchTag}/${searchKeyword}`, {
+        const response = await fetch(`${API_BASE_URL}/api/projects/search/${searchTag}/${searchKeyword}`, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${user.token}`

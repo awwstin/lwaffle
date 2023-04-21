@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useProjectsContext } from "../hooks/useProjectsContext"
 import { useAuthContext } from '../hooks/useAuthContext'
+import { API_BASE_URL } from '../apiConfig.js';
 
 const ProjectForm = () => {
   const { dispatch } = useProjectsContext()
@@ -76,7 +77,7 @@ const ProjectForm = () => {
   
     const project = {title, description, tags: Array.from(selectedTags), nums}
 
-    const response = await fetch('/api/projects/', {
+    const response = await fetch('${API_BASE_URL}/api/projects/', {
       method: 'POST',
       body: JSON.stringify(project),
       headers: {

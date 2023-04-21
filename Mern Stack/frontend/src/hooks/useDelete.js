@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
-
+import { API_BASE_URL } from '../apiConfig.js';
 export const useDelete = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
@@ -10,7 +10,7 @@ export const useDelete = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch(`/api/user/${email}`, {
+    const response = await fetch(`${API_BASE_URL}/api/user/${email}`, {
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json",

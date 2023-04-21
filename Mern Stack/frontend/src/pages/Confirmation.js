@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-
+import { API_BASE_URL } from '../apiConfig.js';
 
 function Confirmation() {
   let {email} = useParams();
@@ -16,7 +16,7 @@ function Confirmation() {
       email: email,
       emailToken: emailToken,
     }
-    axios.post("/api/user/verifyEmailToken", usernameAndToken)
+    axios.post("${API_BASE_URL}/api/user/verifyEmailToken", usernameAndToken)
       .then(response => {
         const responseStatus = response.data.status;
         if (responseStatus === 'okay') {

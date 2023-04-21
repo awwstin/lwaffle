@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './PasswordReset.css'
+import { API_BASE_URL } from '../apiConfig.js';
 
 const PasswordReset = () => {
 
@@ -25,7 +26,7 @@ const PasswordReset = () => {
               position: "top-center",
             });
           } else {
-            const res = await fetch("/api/user/sendpasswordlink", {
+            const res = await fetch('${API_BASE_URL}/api/user/sendpasswordlink', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -5,14 +5,14 @@ import React from 'react'
 // components
 import ProjectDetails from '../components/ProjectDetails'
 import ProjectForm from '../components/ProjectForm'
-
+import { API_BASE_URL } from '../apiConfig.js';
 const Home = () => {
   const {projects, dispatch} = useProjectsContext()
   const {user} = useAuthContext()
   
   useEffect(() => {
     const fetchProjects = async () => {
-      const response = await fetch('/api/projects/cp', {
+      const response = await fetch('${API_BASE_URL}/api/projects/cp', {
         headers: {'Authorization': `Bearer ${user.token}`},
       })
       const json = await response.json()

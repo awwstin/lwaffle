@@ -6,6 +6,7 @@ import { useAuthContext } from "../hooks/useAuthContext"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { useNavigate } from 'react-router-dom'
+import { API_BASE_URL } from '../apiConfig.js';
 
 const ProjectCard = () => {
 
@@ -34,7 +35,7 @@ const ProjectCard = () => {
 
     // Fetch all projects
     const fetchProjects = async () => {
-      const response = await fetch('/api/projects/all', {
+      const response = await fetch('${API_BASE_URL}/api/projects/all', {
         headers: {'Authorization': `Bearer ${user.token}`},
       })
       const json = await response.json()

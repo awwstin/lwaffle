@@ -1,6 +1,6 @@
 import { useProjectsContext } from '../hooks/useProjectsContext'
 import { useAuthContext } from '../hooks/useAuthContext'
-
+import { API_BASE_URL } from '../apiConfig.js';
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
@@ -13,7 +13,7 @@ const ProjectDetails = ({ project }) => {
       return
     }
 
-    const response = await fetch('/api/projects/' + project._id, {
+    const response = await fetch('${API_BASE_URL}/api/projects/' + project._id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${user.token}`

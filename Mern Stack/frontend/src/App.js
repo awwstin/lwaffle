@@ -32,7 +32,7 @@ const appStyle = {
   width: '100%',  
 }
 
-const socket = io('https://llwaffle.onrender.com')
+const socket = io('https://llwaffle-api.onrender.com')
 
 function App() {
   const { user } = useAuthContext()

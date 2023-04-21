@@ -71,7 +71,7 @@ router.post("/sendpasswordlink",async(req,res)=>{
           const mailOptions = {
               to:email,
               subject:"Sending Email For password Reset",
-              html:`This Link Valid For 1 day https://waffle-fm41.onrender.com/forgotpassword/${userfind.email}/${token}`
+              html:`This Link Valid For 1 day https://llwaffle.onrender.com/forgotpassword/${userfind.email}/${token}`
           }
 console.log('you are here ahahaha')
           transporter.sendMail(mailOptions,(error,info)=>{
